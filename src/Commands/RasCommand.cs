@@ -22,8 +22,8 @@ namespace RasReiios.Commands
 
         public async Task Execute(IChatService chatService, long chatId, int userId, int messageId, string? commandText)
         {
-            Rastreando rastrear = new Rastreando();
-            var rastrearCr = await rastrear.GetInfoRs(commandText);
+            Rastreando rastrear = new Rastreando(commandText);
+            var rastrearCr = await rastrear.GetInfoRs();
 
             foreach (var objeto in rastrearCr.objetos)
             {

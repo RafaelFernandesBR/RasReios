@@ -8,12 +8,18 @@ namespace RasReiios.rastrear
 {
     public class Rastreando
     {
+        public string CodigoRastreio { get; set; }
 
-        public async Task<RasReiios.DadosRastreio.Root> GetInfoRs(string codigoRastreio)
+        public Rastreando(string CodigoRastreio)
+        {
+            this.CodigoRastreio = CodigoRastreio;
+        }
+
+        public async Task<RasReiios.DadosRastreio.Root> GetInfoRs()
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage();
-            request.RequestUri = new Uri($"https://proxyapp.correios.com.br/v1/sro-rastro/{codigoRastreio}");
+            request.RequestUri = new Uri($"https://proxyapp.correios.com.br/v1/sro-rastro/{CodigoRastreio}");
             request.Method = HttpMethod.Get;
 
             request.Headers.Add("Accept", "*/*");
